@@ -1,4 +1,4 @@
-﻿@model Pizza
+﻿@model PizzaCategoriesView
 
 <div class="container">
     <form asp-controller="Menu" asp-action="Update">
@@ -7,6 +7,17 @@
             <label>Nome Pizza:</label>
             <input asp-for="Name" type="text" class="form-control">
             <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Categoria:</label>
+            <select asp-for="Post.CategoryId" rows="10" class="d-block w-100">
+                <option value=""></option>
+                @foreach (Category category in Model.Categories)
+                {
+                    <option value="@category.Id">@category.Title</option>
+                }
+            </select>
+            <span asp-validation-for="Post.CategoryId" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label>Descrizione Pizza:</label>
