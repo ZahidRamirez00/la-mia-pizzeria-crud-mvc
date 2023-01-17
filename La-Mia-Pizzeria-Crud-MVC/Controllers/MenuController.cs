@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using La_Mia_Pizzeria_1.Models;
-using La_Mia_Pizzeria_1.Utils;
+using La_Mia_Pizzeria_Crud_MVC.Models;
 using System.Diagnostics;
-using La_Mia_Pizzeria_1.DataBase;
+using La_Mia_Pizzeria_Crud_MVC.DataBase;
 using Microsoft.Extensions.Hosting;
 
-namespace La_Mia_Pizzeria_1.Controllers
+namespace La_Mia_Pizzeria_Crud_MVC.Controllers
 {
     public class MenuController : Controller
     {
