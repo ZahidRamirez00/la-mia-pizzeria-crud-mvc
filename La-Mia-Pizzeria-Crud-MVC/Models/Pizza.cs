@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using La_Mia_Pizzeria_Crud_MVC.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace La_Mia_Pizzeria_1.Models
+namespace La_Mia_Pizzeria_Crud_MVC.Models
 {
     public class Pizza
     {
@@ -22,6 +24,9 @@ namespace La_Mia_Pizzeria_1.Models
         [Required]
         [Range(1, 100)]
         public double Prezzo { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category? Category { get; set; }
 
         public Pizza() { }
         public Pizza(string name, string description, string image, double prezzo)
