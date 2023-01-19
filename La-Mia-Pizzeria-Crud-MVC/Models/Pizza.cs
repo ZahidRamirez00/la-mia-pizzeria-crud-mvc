@@ -10,14 +10,14 @@ namespace La_Mia_Pizzeria_Crud_MVC.Models
         public int Id { get; set; }
         [Required]
         [Column(TypeName = "varchar(100)")]
-        [StringLength(100, ErrorMessage = "Il campo titolo non può contenere più di 100 caratteri")]
+        [StringLength(100, ErrorMessage = "Il campo nome non può contenere più di 100 caratteri")]
         public string Name { get; set; }
         [Required]
         [Column(TypeName = "text")]
         public string Description { get; set; }
         [Required]
         [Url]
-        [StringLength(300, ErrorMessage = "Il campo titolo non può contenere più di 300 caratteri")]
+        [StringLength(300, ErrorMessage = "Il campo Image non può contenere più di 300 caratteri")]
         public string Image { get; set; }
         
         [Required]
@@ -26,6 +26,8 @@ namespace La_Mia_Pizzeria_Crud_MVC.Models
 
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
+
+        public List<Ingredienti>? Ingredients { get; set; }
 
         public Pizza() { }
         public Pizza(string name, string description, string image, double prezzo)
