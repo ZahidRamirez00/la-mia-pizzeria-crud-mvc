@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaMiaPizzeriaCrudMVC.Migrations
 {
     [DbContext(typeof(PizzeContext))]
-    [Migration("20230117163425_CreazioneDB")]
+    [Migration("20230119170944_CreazioneDB")]
     partial class CreazioneDB
     {
         /// <inheritdoc />
@@ -23,6 +23,21 @@ namespace LaMiaPizzeriaCrudMVC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("IngredientiPizza", b =>
+                {
+                    b.Property<int>("IngredientsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PizzaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("IngredientsId", "PizzaId");
+
+                    b.HasIndex("PizzaId");
+
+                    b.ToTable("IngredientiPizza");
+                });
 
             modelBuilder.Entity("La_Mia_Pizzeria_Crud_MVC.Models.Category", b =>
                 {
@@ -38,7 +53,24 @@ namespace LaMiaPizzeriaCrudMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("La_Mia_Pizzeria_Crud_MVC.Models.Ingredienti", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Ingrediente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("La_Mia_Pizzeria_Crud_MVC.Models.Pizza", b =>
@@ -74,6 +106,21 @@ namespace LaMiaPizzeriaCrudMVC.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Pizze");
+                });
+
+            modelBuilder.Entity("IngredientiPizza", b =>
+                {
+                    b.HasOne("La_Mia_Pizzeria_Crud_MVC.Models.Ingredienti", null)
+                        .WithMany()
+                        .HasForeignKey("IngredientsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("La_Mia_Pizzeria_Crud_MVC.Models.Pizza", null)
+                        .WithMany()
+                        .HasForeignKey("PizzaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("La_Mia_Pizzeria_Crud_MVC.Models.Pizza", b =>
