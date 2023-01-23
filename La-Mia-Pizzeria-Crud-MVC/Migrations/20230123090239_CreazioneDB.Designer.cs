@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LaMiaPizzeriaCrudMVC.Migrations
 {
     [DbContext(typeof(PizzeContext))]
-    [Migration("20230119170944_CreazioneDB")]
+    [Migration("20230123090239_CreazioneDB")]
     partial class CreazioneDB
     {
         /// <inheritdoc />
